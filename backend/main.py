@@ -12,7 +12,6 @@ from fastapi.responses import FileResponse
 from fastapi import UploadFile, File
 import pdfplumber
 from PIL import Image
-import pytesseract
 import io
 import json
 import tempfile

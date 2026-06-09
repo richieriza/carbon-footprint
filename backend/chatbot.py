@@ -90,3 +90,28 @@ def analisis_tagihan(teks_tagihan):
     )
     
     return response.choices[0].message.content
+
+def analisis_tagihan(teks_tagihan):
+    prompt = f"""
+Kamu adalah asisten yang membantu menganalisis tagihan rumah tangga.
+
+Berikut adalah teks dari tagihan/struk:
+{teks_tagihan}
+
+Identifikasi dan ekstrak informasi berikut dalam format JSON:
+- kategori: salah satu dari [listrik, air, transportasi, sampah, lainnya]
+- nilai: angka numerik dari tagihan (kWh untuk listrik, liter untuk air, km untuk transportasi, kg untuk sampah)
+- deskripsi: penjelasan singkat tagihan ini
+- confidence: tingkat keyakinan kamu (tinggi/sedang/rendah)
+
+Balas HANYA dengan JSON, tanpa teks lain.
+Contoh: {{"kategori": "listrik", "nilai": 150, "deskripsi": "Tagihan listrik PLN 150 kWh", "confidence": "tinggi"}}
+"""
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        max_tokens=500,
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    return response.choices[0].message.content

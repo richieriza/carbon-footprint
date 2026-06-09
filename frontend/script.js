@@ -62,6 +62,18 @@ function konfirmasiTagihan() {
 function tutupModal() {
   document.getElementById("modal-overlay").style.display = "none";
   hasilAnalisis = null;
+  document.getElementById("fileTagihan").value = "";
+  document.getElementById("upload-label").textContent = "Upload tagihan (PDF/Gambar)";
+}
+
+function resetForm() {
+  document.getElementById("nama").value = "";
+  document.getElementById("listrik").value = "";
+  document.getElementById("air").value = "";
+  document.getElementById("transportasi").value = "";
+  document.getElementById("sampah").value = "";
+  document.getElementById("fileTagihan").value = "";
+  document.getElementById("upload-label").textContent = "Upload tagihan (PDF/Gambar)";
 }
 
 async function hitungCarbon() {
@@ -266,3 +278,4 @@ if (chatInput) {
 if (document.getElementById("total-co2")) {
     tampilkanHasil();
 }
+

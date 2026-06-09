@@ -111,7 +111,7 @@ async def upload_tagihan(file: UploadFile = File(...)):
                 "role": "user",
                 "content": [
                     {"type": "image_url", "image_url": {"url": f"data:{file.content_type};base64,{b64}"}},
-                    {"type": "text", "text": 'Analisis tagihan ini, ekstrak dalam JSON: {"kategori": "listrik/air/transportasi/sampah/lainnya", "nilai": angka, "deskripsi": "...", "confidence": "tinggi/sedang/rendah"}. Balas HANYA JSON.'}
+                    {"type": "text", "text": 'Analisis tagihan ini dan ekstrak dalam format JSON. PENTING: untuk kategori listrik, nilai harus dalam kWh (bukan Rupiah). Untuk air, nilai dalam liter. Untuk transportasi, nilai dalam km. Untuk sampah, nilai dalam kg. Jika tidak ada nilai kWh eksplisit di struk listrik, estimasi dari total tagihan dibagi tarif per kWh (sekitar Rp1.500/kWh). Format: {"kategori": "listrik/air/transportasi/sampah/lainnya", "nilai": angka, "deskripsi": "...", "confidence": "tinggi/sedang/rendah"}. Balas HANYA JSON tanpa markdown.'}
                 ]
             }]
         )

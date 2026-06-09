@@ -109,6 +109,7 @@ async def upload_tagihan(file: UploadFile = File(...)):
     except HTTPException:
         raise
     except Exception as e:
+        print(f"ERROR upload-tagihan: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/")

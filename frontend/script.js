@@ -29,7 +29,9 @@ async function uploadTagihan(input) {
       return;
     }
 
+    console.log("data dari server:", data);
     hasilAnalisis = data.analisis;
+    console.log("hasilAnalisis:", hasilAnalisis);
     document.getElementById("modal-deskripsi").textContent = data.analisis.deskripsi || "-";
     document.getElementById("modal-kategori").textContent = data.analisis.kategori || "-";
     document.getElementById("modal-nilai").textContent = data.analisis.nilai || "-";
